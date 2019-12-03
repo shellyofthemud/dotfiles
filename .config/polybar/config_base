@@ -1,0 +1,36 @@
+[color]
+
+
+[bar/main]
+monitor = LVDS1
+width = 90%
+height = 40
+offset-x = 5%
+offset-y = 2%
+bottom = false
+fixed-center = false
+line-size = 2
+
+scroll-up = i3wm-wsnext
+scroll-down = iw3m-wsprev
+
+modules-left = i3 
+modules-right = network battery memory date
+
+[module/battery]
+type = internal/battery
+full-at = 20
+time-format = %H:%M
+battery = BAT0
+
+[module/i3]
+index-sort = true
+
+[module/network]
+type = internal/network
+
+[module/memory]
+type = internal/memory
+
+[module/date]
+type = internal/date

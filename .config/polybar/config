@@ -2,14 +2,13 @@
 height = 20
 width = 100%
 tray-position = right
-offset-x = 30
-offset-y = 30
 radius = .2
 
 fixed-center = true
 
 monitor = LVDS1
-override-redirect = false
+override-redirect = true
+wm-restack = i3
 
 modules-left = i3
 modules-center = time
@@ -39,6 +38,7 @@ label-unfocused = %name%
 label-unfocused-padding = 1
 
 label-visible = %name%
+label-visible-padding = 1
 
 
 [module/time]
