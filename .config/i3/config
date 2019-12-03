@@ -8,6 +8,10 @@ for_window [class="^.*"] border pixel 0
 gaps inner 20 gaps outer 15
 font pango:hack 9
 
+#volume adjustment 
+bindsym $mod+Shift+bracketleft exec amixer set Master 1%-
+bindsym $mod+Shift+bracketright exec amixer set Master 1%+
+
 #program launching
 bindsym $mod+b exec qutebrowser --backend=webengine
 bindsym $mod+Shift+b exec firefox
