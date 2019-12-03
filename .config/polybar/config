@@ -1,0 +1,59 @@
+[bar/main]
+height = 20
+width = 100%
+tray-position = right
+offset-x = 30
+offset-y = 30
+radius = .2
+
+fixed-center = true
+
+monitor = LVDS1
+override-redirect = false
+
+modules-left = i3
+modules-center = time
+modules-right = battery 
+
+font-0 = UbuntuMono-Bold:size=12
+line-size = 2
+
+module-margin-right = 1
+module-margin-left = 1
+
+
+[module/i3]
+type = internal/i3
+enable-click = true
+enable-scroll = true
+format = <label-state> <label-mode>
+pin-workspaces = false
+index-sort = true
+
+label-focused = %name%
+label-focused-padding = 1
+label-focused-background = ${xrdb:color1:#222}
+label-focused-underline = ${xrdb:color5:#222}
+
+label-unfocused = %name%
+label-unfocused-padding = 1
+
+label-visible = %name%
+
+
+[module/time]
+type = internal/date
+interval = 5
+time = %H:%M:%S
+label = %time%
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+label-discharging = [%percentage%%]
+label-charging = [⚡%percentage%%]
+
+[module/wifi]
+type = internal/network
+interface = ${env:wlan}
