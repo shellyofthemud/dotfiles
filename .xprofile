@@ -1,0 +1,3 @@
+$HOME/.local/bin/wal -i $HOME/Pictures/wallpaper.jpg
+nm-applet &
+
