@@ -12,13 +12,15 @@ wm-restack = i3
 
 modules-left = i3
 modules-center = time
-modules-right = battery 
+modules-right = ethernet wifi battery 
+separator = |
 
 font-0 = UbuntuMono-Bold:size=12
+font-1 = FontAwesome:pixelsize=12
 line-size = 2
 
-module-margin-right = 1
-module-margin-left = 1
+module-margin-right = 2
+module-margin-left = 2
 
 
 [module/i3]
@@ -57,7 +59,15 @@ label-charging = [⚡%percentage%%]
 [module/wifi]
 type = internal/network
 interface = ${env:WLAN}
+format-connected = <label-connected>
+
+label-connected =  %local_ip%
+label-connected-foreground = ${xrdb:color5:#222}
 
 [module/ethernet]
 type = internal/network
 interface = ${env:ETH}
+format-connected = <label-connected>
+
+label-connected =  %local_ip%
+label-connected-foreground = ${xrdb:color8:#222}
