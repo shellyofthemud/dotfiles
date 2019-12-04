@@ -2,9 +2,3 @@
 	path = .emacs.d/evil
 	url = http://github.com/emacs-evil/evil
 
-[submodule ".local/share/fonts/Font-Awesome"]
-	path = .local/share/fonts/Font-Awesome
-	url = http://github.com/FortAwesome/Font-Awesome
-[submodule ".local/share/fonts/fonts"]
-	path = .local/share/fonts/fonts
-	url = http://github.com/powerline/fonts
