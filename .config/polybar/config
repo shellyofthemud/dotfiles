@@ -56,4 +56,8 @@ label-charging = [⚡%percentage%%]
 
 [module/wifi]
 type = internal/network
-interface = ${env:wlan}
+interface = ${env:WLAN}
+
+[module/ethernet]
+type = internal/network
+interface = ${env:ETH}
