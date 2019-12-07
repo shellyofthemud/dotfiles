@@ -24,7 +24,6 @@
   :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
 
-
 (use-package ewal :ensure t
 	     :init (setq ewal-use-built-in-always-p nil
 			 ewal-use-built-in-on-failure-p t
@@ -67,16 +66,17 @@
         which-key-idle-delay 0.05)
   )
 
-(use-package pdf-tools
+(use-package pdf-tools :ensure t
   :config
   (pdf-tools-install)
   (setq-default pdf-view-display-size 'fit-page)
+  (setq auto-revert-interval .5)
   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
   (add-hook 'pdf-view-mode-hook (lambda () (cua-mode 0)))
 
   (define-key pdf-view-mode-map (kbd "h") 'image-backward-hscroll)
   (define-key pdf-view-mode-map (kbd "j") 'pdf-view-next-line-or-next-page)
-  (define-key pdf-view-mode-map (kbd "k") 'pdf-view-previous-line-or-next-page)
+  (define-key pdf-view-mode-map (kbd "k") 'pdf-view-previous-line-or-previous-page)
   (define-key pdf-view-mode-map (kbd "l") 'image-forward-hscroll)
   )
 (use-package key-chord
@@ -90,9 +90,11 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (toggle-scroll-bar -1)
+(setq make-backup-files nil)
 
 ;;; key bindings
-(key-chord-define-global "  " 'helm-M-x)
+(key-chord-define-global "  " 'counsel-M-x)
+(key-chord-define-global ",c" 'comment-region)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -123,7 +125,7 @@
      ("\\?\\?\\?+" . "#428568"))))
  '(package-selected-packages
    (quote
-    (org-bullets which-key ivy go-mode pdf-tools ewal-spacemacs-themes ewal use-package org-evil evil-visual-mark-mode)))
+    (web-mode latex-preview-pane org-bullets which-key ivy go-mode pdf-tools ewal-spacemacs-themes ewal use-package org-evil evil-visual-mark-mode)))
  '(pdf-view-midnight-colors (quote ("#bfcbb3" . "#021110"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
