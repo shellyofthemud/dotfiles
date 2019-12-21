@@ -97,3 +97,4 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id /usr/bin/feh --bg-fill $HOME/Pictures/wallpaper.jpg
