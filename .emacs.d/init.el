@@ -25,16 +25,16 @@
   )
 
 (use-package ewal :ensure t
-	     :init (setq ewal-use-built-in-always-p nil
-			 ewal-use-built-in-on-failure-p t
-			 ewal-built-in-palette "sexy material"
-			 ewal-json-file "~/.cache/wal/colors.json")
-	     )
+  :init (setq ewal-use-built-in-always-p nil
+	      ewal-use-built-in-on-failure-p t
+	      ewal-built-in-palette "sexy material"
+	      ewal-json-file "~/.cache/wal/colors.json")
+  )
 (use-package ewal-spacemacs-themes
-	:config (progn
-		  (load-theme 'ewal-spacemacs-modern t)
-		  (enable-theme 'ewal-spacemacs-modern))
-	)
+  :config (progn
+	    (load-theme 'ewal-spacemacs-modern t)
+	    (enable-theme 'ewal-spacemacs-modern))
+  )
 
 (use-package ivy :ensure t
   :diminish (ivy-mode . "")
@@ -55,15 +55,15 @@
    ("C-c s" . counsel-git-grep)
    ("C-c /" . counsel-ag)
    ("C-c l" . counsel-locate))
-   )
+  )
 
 (use-package which-key :ensure t
   :init (which-key-mode)
   :config
   (which-key-setup-side-window-right-bottom)
   (setq which-key-sort-order 'which-key-key-order-alpha
-        which-key-side-window-max-width 0.33
-        which-key-idle-delay 0.05)
+	which-key-side-window-max-width 0.33
+	which-key-idle-delay 0.05)
   )
 
 (use-package pdf-tools :ensure t
@@ -79,10 +79,21 @@
   (define-key pdf-view-mode-map (kbd "k") 'pdf-view-previous-line-or-previous-page)
   (define-key pdf-view-mode-map (kbd "l") 'image-forward-hscroll)
   )
+
 (use-package key-chord
   :init (key-chord-mode 1)
   :config
   )
+
+(use-package python-mode :ensure t
+  :config
+  (add-hook 'python-mode-hook
+	    (lambda ()
+	      (setq-default indent-tabs-mode t)
+	      (setq-default tab-width 4)
+	      (setq-default py-indent-tabs-mode t))
+	    (add-to-list 'write-file-functions 'delete-trailing-whitespace)
+	    ))
 
 
 
@@ -125,7 +136,7 @@
      ("\\?\\?\\?+" . "#428568"))))
  '(package-selected-packages
    (quote
-    (web-mode latex-preview-pane org-bullets which-key ivy go-mode pdf-tools ewal-spacemacs-themes ewal use-package org-evil evil-visual-mark-mode)))
+    (python-mode web-mode latex-preview-pane org-bullets which-key ivy go-mode pdf-tools ewal-spacemacs-themes ewal use-package org-evil evil-visual-mark-mode)))
  '(pdf-view-midnight-colors (quote ("#bfcbb3" . "#021110"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
