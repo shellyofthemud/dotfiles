@@ -1,5 +1,6 @@
 # some configuration. "Mod 4" = windows/super key
 set $mod Mod4
+set $reload Mod1
 floating_modifier $mod
 hide_edge_borders both
 for_window [class="^.*"] border pixel 0
@@ -49,10 +50,11 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+q kill
 
 # bindings for reloading things- config, wallpaper, polybar, etc.
-bindsym $mod+r+w exec /usr/bin/feh --bg-fill $HOME/Pictures/wallpaper.jpg
-bindsym $mod+r+p exec $HOME/.config/polybar/launch.sh
-bindsym $mod+r+c reload
-bindsym $mod+Shift+r+c restart
+# TODO this really doens't work right now- can't use 2 letters together
+bindsym $mod+$reload+w exec /usr/bin/feh --bg-fill $HOME/Pictures/wallpaper.jpg
+bindsym $mod+$reload+p exec $HOME/.config/polybar/launch.sh
+bindsym $mod+$reload+c reload
+bindsym $mod+Shift+$reload+c restart
 
 #gaps modifying
 bindsym $mod+Shift+period gaps inner all plus 5; gaps outer all plus 5
@@ -85,6 +87,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+Ctrl mode "resize"
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
 
@@ -95,7 +98,6 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id /usr/bin/feh --bg-fill $HOME/Pictures/wallpaper.jpg
