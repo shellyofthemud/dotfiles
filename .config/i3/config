@@ -8,9 +8,10 @@ gaps inner 20 gaps outer 15
 font pango:hack 9
 
 # scratch workspace/terminal
-exec --no-startup-id exec xterm -n scratchpad
-for_window [instance="scratchpad"] move scratch
-for_window [workspace="scratch"] floating enable
+for_window [title="scratchpad"] floating enable
+for_window [title="scratchpad"] move container to scratchpad
+exec --no-startup-id exec xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T scratchpad -e tmux
+for_window [title="scratchpad"] move absolute position center
 
 # volume adjustment
 bindsym $mod+Shift+bracketleft exec amixer set Master 1%-
@@ -49,8 +50,10 @@ bindsym $mod+a focus parent
 # kill focused window
 bindsym $mod+Shift+q kill
 
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move scratchpad
+
 # bindings for reloading things- config, wallpaper, polybar, etc.
-# TODO this really doens't work right now- can't use 2 letters together
 bindsym $mod+$reload+w exec /usr/bin/feh --bg-fill $HOME/Pictures/wallpaper.jpg
 bindsym $mod+$reload+p exec $HOME/.config/polybar/launch.sh
 bindsym $mod+$reload+c reload
@@ -87,7 +90,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+Ctrl mode "resize"
+bindsym $mod+Ctrl+r mode "resize"
 mode "resize" {
         bindsym h resize shrink width 10 px or 10 ppt
 
