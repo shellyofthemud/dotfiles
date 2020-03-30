@@ -1,0 +1,15 @@
+servers:
+  survival:
+    address: survival:25565
+    restricted: false
+    motd: '#RONASZN2020'
+
+  redstone:
+    address: rs:25565
+    restricted: false
+    motd: '#RONASZN2020'
+
+  minigames:
+    address: mg:25565
+    restricted: false
+    motd: '#RONASZN2020'

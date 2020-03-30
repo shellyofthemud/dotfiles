@@ -1,0 +1,6 @@
+Vault:https://www.spigotmc.org/resources/vault.34315/download?version=271004
+AsyncWorldEdit:https://www.spigotmc.org/resources/asyncworldedit.327/download?version=318389
+ChangeSkin:https://www.spigotmc.org/resources/changeskin.21469/download?version=207217
+ProtocolLib:https://github.com/dmulloy2/ProtocolLib/releases/download/4.5.0/ProtocolLib.jar
+CoreProtect:https://www.spigotmc.org/resources/coreprotect.8631/download?version=314083
+BungeeCord:https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar 
