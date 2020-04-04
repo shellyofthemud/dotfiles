@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-(cat ~/.cache/wal/sequences &)
+
+# setting some pretty colors for the terminal
+[[ -e $HOME/.cache/wal/sequences ]] && (cat ~/.cache/wal/sequences &)
+[[ $(command -v transset-df) ]] && transset-df .85 -a > /dev/null
 
 # Aliases
 alias q='exit'
@@ -8,11 +11,13 @@ alias ls='ls --color=auto'
 alias ll='ls -al'
 alias deorphan='pacaur -Rsn $(pacaur -Qtdq)'
 alias logcheck='while true; do dmesg | tail; done'
-PS1="[\u@\h \W]"
-transset-df .85 -a > /dev/null
+
+# Environment variables
+export PS1="[\u@\h \W]"
 export EDITOR=emacs
 export GOPATH=/home/sarenord/go/
 export PATH=$PATH:/home/sarenord/bin/:/home/sarenord/go/bin/:$HOME/.gem/ruby/2.4.0/bin:/usr/lib/emscripten/:/usr/share/applications/:/home/sarenord/.local/bin/
+export PIPENV_VENV_IN_PROJECT="enabled"
 
 
 # Utility functions
@@ -32,6 +37,7 @@ splitpath() {
     IFS=' '
 }
 
+# End section - these are just things that you're not supposed to put anywhere but the end
 # start xorg
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx
