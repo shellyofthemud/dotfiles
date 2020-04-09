@@ -1,0 +1,8 @@
+#!/bin/bash
+
+[[ ! -e $HOME/.sysconfig/ ]] && mkdir $HOME/.sysconfig
+# LINKS FILE FORMAT: [target]:[name]
+for l in $(cat ~/.config/links);
+do
+	$(echo $l | awk '{ split($0, fn, ":"); printf "ln -s %s %s", fn[1], fn[2]; }')
+done
