@@ -21,7 +21,9 @@
 (use-package helm :ensure t)
 
 (use-package org-bullets :ensure t
-  :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  :config (add-hook 'org-mode-hook (lambda ()
+				     (org-bullets-mode 1)
+				     (visual-line-mode 1)))
   )
 
 (use-package ewal :ensure t
@@ -87,6 +89,9 @@
   :config
   )
 
+(use-package neotree
+  :init (global-set-key [f8] 'neotree-toggle))
+
 ;;; Major mode packages
 (use-package python-mode :ensure t
   :config  (add-hook 'python-mode-hook
@@ -97,50 +102,61 @@
 	    (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
 ;;; some configuration commands
-		(menu-bar-mode -1)
-		(tool-bar-mode -1)
-		(toggle-scroll-bar -1)
-		(setq make-backup-files nil)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(toggle-scroll-bar -1)
+(setq make-backup-files nil)
+(setq org-src-preserve-indentation t)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((makefile . t)))
+
+;;; font setting to make chinese characters work
+(set-frame-font "monospace-10")
+(set-fontset-font "fontset-default" 'han (font-spec :family "SimSun" :size 10))
 
 ;;; key bindings
-		(key-chord-define-global "  " 'counsel-M-x)
-		(key-chord-define-global ",c" 'comment-region)
+(key-chord-define-global "  " 'counsel-M-x)
+(key-chord-define-global ",c" 'comment-region)
 
 ;;; emacs setting storage
-		(custom-set-variables
-		 ;; custom-set-variables was added by Custom.
-		 ;; If you edit it by hand, you could mess it up, so be careful.
-		 ;; Your init file should contain only one such instance.
-		 ;; If there is more than one, they won't work right.
-		 '(ansi-color-names-vector
-		   ["#010d0c" "#2D6354" "#4E7151" "#428568" "#619369" "#B1A244" "#90A96C" "#bfcbb3"])
-		 '(custom-safe-themes
-		   (quote
-		    ("41098e2f8fa67dc51bbe89cce4fb7109f53a164e3a92356964c72f76d068587e" default)))
-		 '(hl-todo-keyword-faces
-		   (quote
-		    (("TODO" . "#428568")
-		     ("NEXT" . "#428568")
-		     ("THEM" . "#90A96C")
-		     ("PROG" . "#619369")
-		     ("OKAY" . "#619369")
-		     ("DONT" . "#2D6354")
-		     ("FAIL" . "#2D6354")
-		     ("DONE" . "#718d73")
-		     ("NOTE" . "#428568")
-		     ("KLUDGE" . "#428568")
-		     ("HACK" . "#428568")
-		     ("TEMP" . "#428568")
-		     ("FIXME" . "#428568")
-		     ("XXX+" . "#428568")
-		     ("\\?\\?\\?+" . "#428568"))))
-		 '(package-selected-packages
-		   (quote
-		    (jdee python-mode web-mode latex-preview-pane org-bullets which-key ivy go-mode pdf-tools ewal-spacemacs-themes ewal use-package org-evil evil-visual-mark-mode)))
-		 '(pdf-view-midnight-colors (quote ("#bfcbb3" . "#021110"))))
-		(custom-set-faces
-		 ;; custom-set-faces was added by Custom.
-		 ;; If you edit it by hand, you could mess it up, so be careful.
-		 ;; Your init file should contain only one such instance.
-		 ;; If there is more than one, they won't work right.
-		 )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#010d0c" "#2D6354" "#4E7151" "#428568" "#619369" "#B1A244" "#90A96C" "#bfcbb3"])
+ '(custom-safe-themes
+   (quote
+    ("41098e2f8fa67dc51bbe89cce4fb7109f53a164e3a92356964c72f76d068587e" default)))
+ '(hl-todo-keyword-faces
+   (quote
+    (("TODO" . "#428568")
+     ("NEXT" . "#428568")
+     ("THEM" . "#90A96C")
+     ("PROG" . "#619369")
+     ("OKAY" . "#619369")
+     ("DONT" . "#2D6354")
+     ("FAIL" . "#2D6354")
+     ("DONE" . "#718d73")
+     ("NOTE" . "#428568")
+     ("KLUDGE" . "#428568")
+     ("HACK" . "#428568")
+     ("TEMP" . "#428568")
+     ("FIXME" . "#428568")
+     ("XXX+" . "#428568")
+     ("\\?\\?\\?+" . "#428568"))))
+ '(inhibit-startup-buffer-menu nil)
+ '(initial-buffer-choice (quote remember-notes))
+ '(package-selected-packages
+   (quote
+    (yaml-mode neotree jdee python-mode web-mode latex-preview-pane org-bullets which-key ivy go-mode pdf-tools ewal-spacemacs-themes ewal use-package org-evil evil-visual-mark-mode)))
+ '(pdf-view-midnight-colors (quote ("#bfcbb3" . "#021110"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
