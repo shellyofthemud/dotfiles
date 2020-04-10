@@ -3,15 +3,14 @@ set incsearch
 set number
 set relativenumber
 set paste
+set tabstop=4
+set shiftwidth=4
+syntax on
 
-function changetabs(size)
-  let newsize=a:size
-  setlocal tabstop=newsize
-endfunction
-
-function changetabswrapper()
-  call inputsave()
-  let a:inp = input("Set tab size to: ")
-  call inputrestore()
-  call changetabs(a:inp)
+" This is still a WIP - might not finish this
+function Changetabs()
+	call inputsave()
+	let l:inp = input("Set tab size to: ")
+	call inputrestore()
+	setlocal tabstop = l:inp
 endfunction
