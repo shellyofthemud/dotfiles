@@ -15,8 +15,8 @@ alias logcheck='while true; do dmesg | tail; done'
 # Environment variables
 export PS1="[\u@\h \W]"
 export EDITOR=emacs
-export GOPATH=/home/sarenord/go/
-export PATH=$PATH:/home/sarenord/bin/:/home/sarenord/go/bin/:$HOME/.gem/ruby/2.4.0/bin:/usr/lib/emscripten/:/usr/share/applications/:/home/sarenord/.local/bin/
+export GOPATH=$HOME/go/
+export PATH=$PATH:$HOME/bin/:$HOME/go/bin/:$HOME/.gem/ruby/2.4.0/bin:/usr/lib/emscripten/:/usr/share/applications/:$HOME/.local/bin/
 export PIPENV_VENV_IN_PROJECT="enabled"
 
 
@@ -35,6 +35,10 @@ splitpath() {
 	echo $i
     done
     IFS=' '
+}
+
+dfupdate() {
+	[[ ! -e ~/.git ]] && [[ ~ -e ~/git/ ]] && mkdir ~/git; git clone git@github.com:sarenord/dotfiles ~/git/ && source $HOME/git/dotfiles/install.sh
 }
 
 # End section - these are just things that you're not supposed to put anywhere but the end
