@@ -10,13 +10,13 @@ alias q='exit'
 alias ls='ls --color=auto'
 alias ll='ls -al'
 alias deorphan='pacaur -Rsn $(pacaur -Qtdq)'
-alias logcheck='while true; do dmesg | tail; done'
+alias logcat='while true; do dmesg | tail; done'
 
 # Environment variables
 export PS1="[\u@\h \W]"
 export EDITOR=emacs
 export GOPATH=$HOME/go/
-export PATH=$PATH:$HOME/bin/:$HOME/go/bin/:$HOME/.gem/ruby/2.4.0/bin:/usr/lib/emscripten/:/usr/share/applications/:$HOME/.local/bin/
+export PATH=$PATH:$HOME/bin/:$HOME/go/bin/:$HOME/.gem/ruby/*.*.*/bin:/usr/share/applications/:$HOME/.local/bin/
 export PIPENV_VENV_IN_PROJECT="enabled"
 
 
@@ -37,6 +37,7 @@ splitpath() {
     IFS=' '
 }
 
+# usage: takes no args, does not change directory
 dfupdate() {
 	[[ ! -e ~/.git ]] && [[ ~ -e ~/git/ ]] && mkdir ~/git; git clone git@github.com:sarenord/dotfiles ~/git/ && source $HOME/git/dotfiles/install.sh
 }
