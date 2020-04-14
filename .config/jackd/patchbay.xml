@@ -1,0 +1,55 @@
+<!DOCTYPE patchbay>
+<patchbay name="patchbay" version="0.6.2">
+ <output-sockets>
+  <socket client="system" name="system 1" type="jack-audio" exclusive="off">
+   <plug>capture_1</plug>
+   <plug>capture_2</plug>
+  </socket>
+  <socket client="PulseAudio JACK Sink" name="PulseAudio JACK Sink 1" type="jack-audio" exclusive="off">
+   <plug>front-left</plug>
+   <plug>front-right</plug>
+  </socket>
+  <socket client="REAPER" name="REAPER 1" type="jack-audio" exclusive="off">
+   <plug>out1</plug>
+   <plug>out2</plug>
+  </socket>
+  <socket client="Hydrogen" name="Hydrogen 1" type="jack-audio" exclusive="off">
+   <plug>out_L</plug>
+   <plug>out_R</plug>
+  </socket>
+  <socket client="alsa_midi" name="S24c MIDI" type="jack-midi" exclusive="off">
+   <plug>Studio 24c MIDI 1 \(out\)</plug>
+  </socket>
+ </output-sockets>
+ <input-sockets>
+  <socket client="system" name="system 1" type="jack-audio" exclusive="off">
+   <plug>playback_1</plug>
+   <plug>playback_2</plug>
+  </socket>
+  <socket client="PulseAudio JACK Source" name="PulseAudio JACK Source 1" type="jack-audio" exclusive="off">
+   <plug>front-left</plug>
+   <plug>front-right</plug>
+  </socket>
+  <socket client="REAPER" name="REAPER Capture" type="jack-audio" exclusive="off">
+   <plug>in1</plug>
+   <plug>in2</plug>
+  </socket>
+  <socket client="REAPER" name="REAPER Aux" type="jack-audio" exclusive="off">
+   <plug>in3</plug>
+   <plug>in4</plug>
+  </socket>
+  <socket client="REAPER" name="REAPER MIDI" type="jack-midi" exclusive="off">
+   <plug>MIDI Input 2</plug>
+  </socket>
+ </input-sockets>
+ <slots/>
+ <cables>
+  <cable input="system 1" type="jack-audio" output="PulseAudio JACK Sink 1"/>
+  <cable input="PulseAudio JACK Source 1" type="jack-audio" output="system 1"/>
+  <cable input="REAPER Capture" type="jack-audio" output="system 1"/>
+  <cable input="system 1" type="jack-audio" output="REAPER 1"/>
+  <cable input="REAPER Aux" type="jack-audio" output="Hydrogen 1"/>
+  <cable input="REAPER MIDI" type="jack-midi" output="S24c MIDI"/>
+ </cables>
+</patchbay>
+
