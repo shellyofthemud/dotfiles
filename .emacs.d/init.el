@@ -4,7 +4,6 @@
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (setq package-enable-at-startup nil)
 (package-initialize)
-
 (require 'evil)
 (evil-mode t)
 
@@ -15,17 +14,12 @@
 (eval-when-compile
   (require 'use-package))
 
-
-;;; packages to install/use
+;;; packages I just want to make sure are here
 (use-package ispell :ensure t)
 (use-package helm :ensure t)
+(use-package org-bullets :ensure t)
 
-(use-package org-bullets :ensure t
-  :config (add-hook 'org-mode-hook (lambda ()
-				     (org-bullets-mode 1)
-				     (visual-line-mode 1)))
-  )
-
+;;; packages to configure
 (use-package ewal :ensure t
   :init (setq ewal-use-built-in-always-p nil
 	      ewal-use-built-in-on-failure-p t
@@ -95,30 +89,47 @@
 ;;; Major mode packages
 (use-package python-mode :ensure t
   :config  (add-hook 'python-mode-hook
-	    (lambda ()
-	      (setq-default indent-tabs-mode f)
-	      (setq-default tab-width 4)
-	      (setq-default py-indent-tabs-mode f))
-	    (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
+		     (lambda ()
+		       (setq-default indent-tabs-mode f)
+		       (setq-default tab-width 4)
+		       (setq-default py-indent-tabs-mode f))
+		     (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
-;;; some configuration commands
+(use-package org :ensure t
+  :config (add-hook 'org-mode-hook (lambda ()
+				     (org-bullets-mode 1)
+				     (visual-line-mode 1)
+				     (setq org-src-preserve-indentation t)
+				     (org-babel-do-load-languages
+				      'org-babel-load-languages
+				      '((makefile . t)
+					(kotlin . t)
+					(lisp . t)
+					(java . t)
+					(js . t)
+					(C . t)
+					(latex . t)
+					(org . t)
+					(python . t)
+					(shell . t)
+					(browser . t))))))
+
+;;; variable setting
+(setq initial-buffer-choice "~/.emacs.d/notes")
+(setq make-backup-files nil)
+(setq inhibit-startup-buffer-menu nil)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (toggle-scroll-bar -1)
-(setq make-backup-files nil)
-(setq org-src-preserve-indentation t)
-
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((makefile . t)))
-
-;;; font setting to make chinese characters work
+;;; (desktop-save-mode 1)
+;;; Inconsolata currently causes a weird issue with character spacing
 (set-frame-font "monospace-10")
 (set-fontset-font "fontset-default" 'han (font-spec :family "SimSun" :size 10))
 
-;;; key bindings
+;;; Some shortcuts
 (key-chord-define-global "  " 'counsel-M-x)
 (key-chord-define-global ",c" 'comment-region)
+
 
 ;;; emacs setting storage
 (custom-set-variables
@@ -148,11 +159,9 @@
      ("FIXME" . "#428568")
      ("XXX+" . "#428568")
      ("\\?\\?\\?+" . "#428568"))))
- '(inhibit-startup-buffer-menu nil)
- '(initial-buffer-choice (quote remember-notes))
  '(package-selected-packages
    (quote
-    (yaml-mode neotree jdee python-mode web-mode latex-preview-pane org-bullets which-key ivy go-mode pdf-tools ewal-spacemacs-themes ewal use-package org-evil evil-visual-mark-mode)))
+    (ob-browser ob-kotlin kotlin-mode svg-clock yaml-mode neotree jdee python-mode web-mode latex-preview-pane org-bullets which-key ivy go-mode pdf-tools ewal-spacemacs-themes ewal use-package org-evil evil-visual-mark-mode)))
  '(pdf-view-midnight-colors (quote ("#bfcbb3" . "#021110"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

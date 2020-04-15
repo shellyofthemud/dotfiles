@@ -1,0 +1,18 @@
+-*- org -*-
+#+STARTUP: showeverything
+#+STARTUP: inlineimages
+#+OPTIONS: toc:nil
+
+* Quick Links
+** [[/home/sarenord/school/winter2020/school.org][Winter 2020 school.org]]
+** Notes
+
+* Project Folders
+** [[/home/sarenord/programming/sweeps/][Sweeps]]
+** [[/home/sarenord/programming/sweeps-python/][sweeps-python]]
+
+
+* Tasks
+** Misc
+*** TODO Finish this page and add it to git
+*** TODO Finish setting new stuff up in init.el
