@@ -5,6 +5,9 @@
 [[ -e $HOME/.cache/wal/sequences ]] && (cat ~/.cache/wal/sequences &)
 [[ $(command -v transset-df) ]] && transset-df .85 -a > /dev/null
 
+# set personal environment variables
+[ -f ~/.secrets ] && source ~/.secrets
+
 # Aliases
 alias q='exit'
 alias ls='ls --color=auto'
@@ -38,9 +41,9 @@ splitpath() {
 }
 
 # usage: takes no args, does not change directory
-dfupdate() {
-	[[ ! -e ~/.git ]] && [[ ~ -e ~/git/ ]] && mkdir ~/git; git clone git@github.com:sarenord/dotfiles ~/git/ && source $HOME/git/dotfiles/install.sh
-}
+# dfupdate() {
+	# [[ ! -e ~/.git ]] && [[ ~ -e ~/git/ ]] && mkdir ~/git; git clone git@github.com:sarenord/dotfiles ~/git/ && source $HOME/git/dotfiles/install.sh
+# }
 
 # End section - these are just things that you're not supposed to put anywhere but the end
 # start xorg
