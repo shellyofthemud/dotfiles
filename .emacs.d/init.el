@@ -86,7 +86,7 @@
 (use-package neotree
   :init (global-set-key [f8] 'neotree-toggle))
 
-;;; Major mode packages
+;;; Major mode configurations
 (use-package python-mode :ensure t
   :config  (add-hook 'python-mode-hook
 		     (lambda ()
@@ -100,6 +100,8 @@
 				     (org-bullets-mode 1)
 				     (visual-line-mode 1)
 				     (setq org-src-preserve-indentation t)
+				     (setq org-agenda-files
+					   '("~/.local/share/calendar/personal"))
 				     (org-babel-do-load-languages
 				      'org-babel-load-languages
 				      '((makefile . t)
@@ -125,6 +127,10 @@
 ;;; Inconsolata currently causes a weird issue with character spacing
 (set-frame-font "monospace-10")
 (set-fontset-font "fontset-default" 'han (font-spec :family "SimSun" :size 10))
+(prefer-coding-system 'utf-8)
+(set-language-environment 'utf-8)
+(set-selection-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
 
 ;;; Some shortcuts
 (key-chord-define-global "  " 'counsel-M-x)
