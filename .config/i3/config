@@ -3,9 +3,13 @@ set $mod Mod4
 set $reload Mod1
 floating_modifier $mod
 hide_edge_borders both
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 5
 gaps inner 20 gaps outer 15
 font pango:hack 9
+
+# TODO: this is probably gonna need a script/restructuring
+# Set mod key to alt - for keyboards at work - WIP
+# bindsym $mod+Ctrl+Esc set $mod $Mod1; set $reload $Mod4
 
 # scratch workspace/terminal
 for_window [title="scratchpad"] floating enable
