@@ -5,6 +5,9 @@
 [[ -e $HOME/.cache/wal/sequences ]] && (cat ~/.cache/wal/sequences &)
 [[ $(command -v transset-df) ]] && transset-df .85 -a > /dev/null
 
+# set up completion awareness for docker-machine
+source /etc/bash_completion.d/docker-machine-prompt.bash
+
 # set personal environment variables
 [ -f ~/.secrets ] && source ~/.secrets
 
@@ -12,11 +15,10 @@
 alias q='exit'
 alias ls='ls --color=auto'
 alias ll='ls -al'
-alias deorphan='pacaur -Rsn $(pacaur -Qtdq)'
+alias deorphan='yay -Rsn $(yay -Qtdq)'
 alias logcat='while true; do dmesg | tail; done'
 
 # Environment variables
-export PS1="[\u@\h \W]"
 export EDITOR=emacs
 export GOPATH=$HOME/go/
 export PATH=$PATH:$HOME/bin/:$HOME/go/bin/:$HOME/.gem/ruby/*.*.*/bin:/usr/share/applications/:$HOME/.local/bin/
@@ -24,11 +26,6 @@ export PIPENV_VENV_IN_PROJECT="enabled"
 
 
 # Utility functions
-# usage: dockerClean container|image|network|volume [-f]
-dockerClean() {
-	docker $1 rm $(docker $1 ls --format "{{.ID}}") $2
-}
-
 # usage: echo $PATH (or other colon-separated string) | splitpath
 splitpath() {
     str=$(cat)
@@ -40,16 +37,22 @@ splitpath() {
     IFS=' '
 }
 
-# usage: takes no args, does not change directory
-# dfupdate() {
-	# [[ ! -e ~/.git ]] && [[ ~ -e ~/git/ ]] && mkdir ~/git; git clone git@github.com:sarenord/dotfiles ~/git/ && source $HOME/git/dotfiles/install.sh
-# }
+dockerprompt() {
+	location=$(__docker_machine_ps1)
+	if [ -z "$location" ]; then
+		location='local'
+	fi
+}
 
-# End section - these are just things that you're not supposed to put anywhere but the end
-# start xorg
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-	exec startx
-fi
+# Prompt settings
+HOST='\e[92m\u@\h\e[39m'
+PROMPT='\W \$> '
+BRANCH='$(git branch --show-current --color=always)'
+REPO='$(git config --get remote.origin.url | splitpath | tail -n 1)'
+DOCKER='$(__docker_machine_ps1 "%s" | awk '\''{ print } END { if (!NR) print "local" }'\'' )'
+GIT="${REPO}-${BRANCH}"
+WHERE="[\e[36m${DOCKER} \e[31m${GIT}\e[39m]\e[49m"
+export PS1="${HOST} ${WHERE}\n${PROMPT}"
 
 # set thefuck aliases
 eval $(thefuck --alias)
