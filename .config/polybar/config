@@ -1,18 +1,20 @@
 [bar/main]
-height = 20
-width = 100%
-tray-position = right
-radius = .2
-
+tray-position = center
+width = 100%:-20
+radius = 5
+bottom = false
+offset-x = 10
+offset-y = 10
+padding = 5
 fixed-center = true
 
-monitor = LVDS1
+monitor = DVI-D-0
 override-redirect = true
 wm-restack = i3
 
 modules-left = i3
 modules-center = time
-modules-right = ethernet wifi battery 
+modules-right = ethernet
 separator = |
 
 font-0 = UbuntuMono-Bold:size=12
