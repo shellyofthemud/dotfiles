@@ -8,7 +8,7 @@ offset-y = 10
 padding = 5
 fixed-center = true
 
-monitor = DVI-D-0
+monitor = 
 override-redirect = true
 wm-restack = i3
 
