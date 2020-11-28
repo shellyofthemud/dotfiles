@@ -1,3 +1,3 @@
 rm $HOME/.cache/wal/sequences
-$HOME/.local/bin/wal -i $HOME/.config/i3/wallpaper.jpg
+wal -i $HOME/.config/i3/wallpaper.jpg
 nm-applet &
