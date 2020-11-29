@@ -102,5 +102,6 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+exec_always --no-startup-id wal -i $HOME/.config/i3/wallpaper.jpg
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id /usr/bin/feh --bg-fill ~/.config/i3/wallpaper.jpg
+exec_always --no-startup-id nm-applet
