@@ -103,5 +103,5 @@ mode "resize" {
 }
 
 exec_always --no-startup-id wal -i $HOME/.config/i3/wallpaper.jpg
-exec_always --no-startup-id bash $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id nm-applet
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id nm-applett s
