@@ -2,6 +2,7 @@
     "audio": "pipewire",
     "bootloader": "systemd-bootctl",
     "custom-commands": [
+		"wget https://github.com/shell-drick/dotfiles/archive/refs/heads/master.zip && unzip master.zip && mv dotfiles-master/* /home/sheldrick/"
     ],
     "!encryption-password": "",
     "filesystem": "ext4",
@@ -19,9 +20,22 @@
         "NetworkManager": true
     },
     "ntp": true,
-    "packages": ["docker", "git", "wget", "zsh", "vim"],
+    "packages": [
+		"docker",
+		"git",
+		"wget",
+		"zsh",
+		"vim",
+		"lightdm",
+		"lightdm-webkit2-greeter",
+		"rxvt-unicode",
+		"qtile"
+	],
     "profile": "xorg",
-    "services": ["docker"],
+    "services": [
+		"docker",
+		"lightdm"
+	],
     "superusers": {
         "sheldrick": {
             "!password": "passwd"
