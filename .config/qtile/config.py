@@ -5,13 +5,26 @@ alt = "mod1"
 
 keys = [
 	Key([mod, "shift"], "q",
-		lazy.shutdown()),
-	Key([mod, "h"],
+		lazy.window.kill()),
+	Key([mod], "h",
 		lazy.layout.left()),
-	Key([mod, "j"],
+	Key([mod], "j",
 		lazy.layout.down()),
-	Key([mod, "k"],
+	Key([mod], "k",
 		lazy.layout.up()),
-	Key([mod, "l"],
-		lazy.layout.right())
+	Key([mod], "l",
+		lazy.layout.right()),
+
+    Key([mod], "enter",
+        lazy.spawn("urxvt"))
+]
+
+@hook.subscribe.client_new
+def dialogs(window):
+    if(window.window.get_wm_type() == 'dialog'
+            or window.window.get_wm_transient_for()):
+                    window.floating = True
+
+layouts = [
+    layout.Tile()
 ]
