@@ -1,0 +1,34 @@
+{
+    "audio": "pipewire",
+    "bootloader": "systemd-bootctl",
+    "custom-commands": [
+    ],
+    "!encryption-password": "",
+    "filesystem": "ext4",
+    "gfx_driver": "",
+    "harddrive": {
+        "path": "/dev/vda"
+    },
+    "hostname": "ricebox",
+    "kernels": [
+        "linux"
+    ],
+    "keyboard-language": "us",
+    "mirror-region": "Worldwide",
+    "nic": {
+        "NetworkManager": true
+    },
+    "ntp": true,
+    "packages": ["docker", "git", "wget", "zsh", "vim"],
+    "profile": "xorg",
+    "services": ["docker"],
+    "superusers": {
+        "sheldrick": {
+            "!password": "passwd"
+        }
+    },
+    "sys-encoding": "utf-8",
+    "sys-language": "en_US",
+    "timezone": "US/Eastern",
+    "users": {}
+}
