@@ -1,6 +1,6 @@
 {
     "audio": "pipewire",
-    "bootloader": "systemd-bootctl",
+    "bootloader": "grub",
     "custom-commands": [
 		"wget https://github.com/shell-drick/dotfiles/archive/refs/heads/master.zip && unzip master.zip && mv dotfiles-master/* /home/sheldrick/"
     ],
