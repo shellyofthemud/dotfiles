@@ -91,3 +91,14 @@ build_ps1() {
 	
 	echo $_ps1fmt
 }
+
+update_dotfiles() {
+	$wd = $(pwd)
+	cd /tmp
+	git clone http://github.com/shell-drick/dotfiles
+	cd dotfiles
+	git submodule update --init --recursive
+	cp -r bin $HOME/
+	cp -r ./.* $HOME/
+	cd $wd
+}
