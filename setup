@@ -1,0 +1,10 @@
+#!/bin/bash
+
+[ ! -d $HOME/dotfiles ] && git clone https://github.com/shell-drick/dotfiles $HOME/dotfiles
+
+for f in $(ls -d $HOME/dotfiles/.[!.]*);
+do
+    fname=$(basename $f)
+    [ -e $HOME/$fname ] && rm -rf $HOME/$fname
+    ln -sf $HOME/dotfiles/$fname $HOME/$fname
+done

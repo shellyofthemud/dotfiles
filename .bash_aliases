@@ -4,8 +4,7 @@ alias ll='ls -al'
 alias pmdo='yay -Rsn $(yay -Qtdq)'
 alias logcat='while true; do dmesg | tail; done'
 alias ippub='`curl -s api.ipify.org`'
-
-# usage: echo $PATH (or other colon-separated string) | splitpath
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/.git --work-tree=$HOME/dotfiles'
 
 getGitUpstream() {
     repo=$(git config --get remote.origin.url)
@@ -14,6 +13,7 @@ getGitUpstream() {
 }
 
 
+# usage: echo $PATH (or other colon-separated string) | splitpath
 splitpath() {
     str=$(cat)
     IFS=':'
