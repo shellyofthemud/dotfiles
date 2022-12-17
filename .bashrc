@@ -17,11 +17,6 @@ else
 	color_prompt=
 fi
 
-# set up completion scripts
-if [ -d $HOME/.config/bash_completion.d ]; then
-	source $HOME/.config/*.bash
-fi
-
 # setting some pretty colors for the terminal
 [[ -e $HOME/.cache/wal/sequences ]] && (cat ~/.cache/wal/sequences &)
 [[ $(command -v transset-df) ]] && transset-df .85 -a > /dev/null
