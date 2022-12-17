@@ -18,8 +18,8 @@ else
 fi
 
 # set up completion scripts
-if ! -d $HOME/.config/bash_completion.d; then
-	source $HOME/bin/docker-machine-ps1.sh	
+if [ -d $HOME/.config/bash_completion.d ]; then
+	source $HOME/.config/*.bash
 fi
 
 # setting some pretty colors for the terminal
