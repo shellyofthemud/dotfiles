@@ -6,7 +6,7 @@ alias logcat='while true; do dmesg | tail; done'
 alias ippub='`curl -s api.ipify.org`'
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/.git --work-tree=$HOME/dotfiles'
 
-[ -d $HOME/.config/bash_completion.d ] && source $HOME/.config/bash_completion.d/*.bash
+[ -d $HOME/.config/bash_completion.d ] && for f in $HOME/.config/bash_completion.d; do source $f; done
 
 getGitUpstream() {
     repo=$(git config --get remote.origin.url)
