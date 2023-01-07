@@ -5,7 +5,7 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 (require 'evil)
-(evil-mode t)
+(evil-mode 1)
 
 ;;; use-package package
 (unless (package-installed-p 'use-package)

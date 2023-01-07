@@ -11,7 +11,7 @@ c.url.searchengines = {
 
 # setting some extra keys to functions
 config.bind(',d', 'config-cycle --temp content.user_stylesheets ./solarized-dark-all-sites.css ""')
-config.bind(',f', 'spawn --userscript qute-lastpass')
+config.bind(',f', 'spawn --userscript qute-bitwarden')
 
 
 ''' load pywal configuration qutewal.py '''
