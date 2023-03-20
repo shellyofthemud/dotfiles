@@ -14,11 +14,13 @@ polybar_launch() {
     polybar main &
     xdotool search --sync --pid $! | cut -f 1 -d$'\n' > $WINDOW_ID_BASE
 
+	[[ $(command -v blueman-applet) ]] && blueman-applet
 
-    polybar app_menu &
-    xdotool search --sync --pid $! > $WINDOW_ID_TOP
 
-    bar_collapse
+    # polybar app_menu &
+    # xdotool search --sync --pid $! > $WINDOW_ID_TOP
+
+    # bar_collapse
 }
 
 rofi_open() {
