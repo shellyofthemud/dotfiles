@@ -146,11 +146,9 @@
  '(ansi-color-names-vector
    ["#010d0c" "#2D6354" "#4E7151" "#428568" "#619369" "#B1A244" "#90A96C" "#bfcbb3"])
  '(custom-safe-themes
-   (quote
-    ("41098e2f8fa67dc51bbe89cce4fb7109f53a164e3a92356964c72f76d068587e" default)))
+   '("41098e2f8fa67dc51bbe89cce4fb7109f53a164e3a92356964c72f76d068587e" default))
  '(hl-todo-keyword-faces
-   (quote
-    (("TODO" . "#428568")
+   '(("TODO" . "#428568")
      ("NEXT" . "#428568")
      ("THEM" . "#90A96C")
      ("PROG" . "#619369")
@@ -164,11 +162,10 @@
      ("TEMP" . "#428568")
      ("FIXME" . "#428568")
      ("XXX+" . "#428568")
-     ("\\?\\?\\?+" . "#428568"))))
+     ("\\?\\?\\?+" . "#428568")))
  '(package-selected-packages
-   (quote
-    (ob-browser ob-kotlin kotlin-mode svg-clock yaml-mode neotree jdee python-mode web-mode latex-preview-pane org-bullets which-key ivy go-mode pdf-tools ewal-spacemacs-themes ewal use-package org-evil evil-visual-mark-mode)))
- '(pdf-view-midnight-colors (quote ("#bfcbb3" . "#021110"))))
+   '(ob-ipython ob-browser ob-kotlin kotlin-mode svg-clock yaml-mode neotree jdee python-mode web-mode latex-preview-pane org-bullets which-key ivy go-mode pdf-tools ewal-spacemacs-themes ewal use-package org-evil evil-visual-mark-mode))
+ '(pdf-view-midnight-colors '("#bfcbb3" . "#021110")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

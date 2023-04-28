@@ -15,6 +15,7 @@ for_window [title="scratchpad"] move container to scratchpad
 exec --no-startup-id exec xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T scratchpad -e tmux
 for_window [title="scratchpad"] move absolute position center
 
+
 # volume adjustment
 bindsym $mod+Shift+bracketleft exec amixer set Master 1%-
 bindsym $mod+Shift+bracketright exec amixer set Master 1%+
@@ -104,7 +105,7 @@ mode "resize" {
 }
 
 exec_always --no-startup-id $HOME/.screenlayout/desk.sh
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id wal -i $HOME/.config/i3/wallpaper.jpg
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
