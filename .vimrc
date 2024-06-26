@@ -33,3 +33,5 @@ nnoremap <C-E> :NERDTreeTabsToggle<CR>
 
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 autocmd VimEnter * NERDTree | wincmd p
+
+command Vb normal! <C-v>
